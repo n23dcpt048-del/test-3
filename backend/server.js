@@ -13,17 +13,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Đây là dòng quan trọng nhất – nhảy ra ngoài backend để lấy public
-app.use(express.static(path.join(__dirname, '..', 'public')));
+// TẤT CẢ FILE TĨNH (HTML, CSS, JS, ảnh) ĐỀU NẰM Ở GỐC PROJECT
+app.use(express.static(path.join(__dirname, '..')));     // phục vụ mọi file ở root
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
+// API
 app.use('/api/organizations', require('./routes/organization'));
 
-// Trả về tochuc.html cho mọi route (để reload không bị 404)
+// Quan trọng: mọi request đều trả về tochuc.html (để reload không bị 404)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'tochuc.html'));
+  res.sendFile(path.join(__dirname, '..', 'tochuc.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server chạy tại port ${PORT}`);
+  console.log(`Server chạy tại port ${PORT} – Truy cập /tochuc.html`);
 });
