@@ -1,0 +1,21 @@
+// backend/utils/db.js
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const path = require('path');
+
+const adapter = new FileSync(path.join(__dirname, '../data/db.json'));
+const db = low(adapter);
+
+// Khởi tạo dữ liệu mặc định nếu chưa có
+db.defaults({
+  admins: [
+    { id: 'admin1', email: 'admin@gmail.com', password: '123456' }
+  ],
+  events: [],
+  organizations: [],
+  contents: [],
+  socials: [],
+  seo: {}
+}).write();
+
+module.exports = db;

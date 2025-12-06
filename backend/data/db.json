@@ -1,0 +1,14 @@
+{
+  "admins": [
+    {
+      "id": "admin1",
+      "email": "admin@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "events": [],
+  "organizations": [],
+  "contents": [],
+  "socials": [],
+  "seo": {}
+}
