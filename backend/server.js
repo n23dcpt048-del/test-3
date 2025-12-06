@@ -15,18 +15,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// QUAN TRỌNG: PHẢI TRỎ ĐÚNG VÀO public Ở GỐC PROJECT
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// ĐÚNG ĐƯỜNG DẪN: public nằm ngoài backend
+app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
-// Routes
+// API routes
 app.use('/api/organizations', require('./routes/organization'));
 
-// Fallback: luôn trả về tochuc.html cho mọi route (để reload trang vẫn hoạt động)
+// Fallback route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'tochuc.html'));
+  res.sendFile(path.join(__dirname, '..', 'public', 'tochuc.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server chạy tại http://localhost:${PORT}`);
+  console.log(`Server chạy tại port ${PORT}`);
 });
