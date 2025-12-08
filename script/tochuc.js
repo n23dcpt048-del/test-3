@@ -1,6 +1,6 @@
 // public/script/tochuc.js – PHIÊN BẢN HOÀN CHỈNH CUỐI CÙNG (có cả placeholder ảnh đẹp)
 
-const API_URL = '/api/organizations';
+const API_URL = 'https://test-3-1trd.onrender.com/api/organizations';
 let organizations = [];
 
 const cardsContainer = document.querySelector('.cards');
@@ -186,4 +186,5 @@ orgForm.addEventListener('submit', handleFormSubmit);
 orgModal.addEventListener('click', e => { if (e.target === orgModal) closeModal(); });
 
 // Load dữ liệu khi trang sẵn sàng
+
 document.addEventListener('DOMContentLoaded', loadOrganizations);
